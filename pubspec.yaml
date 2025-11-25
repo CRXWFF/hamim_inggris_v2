@@ -15,6 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: ^4.7.2
   lottie: ^3.3.2
+  flutter_dotenv: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -31,6 +32,7 @@ flutter:
     - assets/gif/maskot_pilih_bahasa.gif
     - assets/gif/maskot_siap_4_pertanyaan.gif
     - assets/gif/maskot_welcome.gif
+    - .env
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
