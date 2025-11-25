@@ -6,8 +6,7 @@ class OnboardingLogo extends StatelessWidget {
   final double iconSize;
   final String title;
 
-  const OnboardingLogo({Key? key, this.iconSize = 92, this.title = 'HAMIM'})
-    : super(key: key);
+  const OnboardingLogo({super.key, this.iconSize = 92, this.title = 'HAMIM'});
 
   @override
   Widget build(BuildContext context) {

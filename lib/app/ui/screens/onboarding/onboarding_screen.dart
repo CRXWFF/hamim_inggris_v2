@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hamim_inggris_v2/app/core/constants/color.dart';
-import '../home/home_screen.dart';
+import 'package:hamim_inggris_v2/app/routes/routes.dart';
 import 'widgets/logo.dart';
 
 // Onboarding statis khusus untuk debugging dengan tap layar penuh untuk lanjut
@@ -22,11 +22,8 @@ class OnboardingScreen extends StatelessWidget {
             splashColor: Colors.white24,
             highlightColor: Colors.white10,
             onTap: () {
-              // navigasi tanpa ada animasinya
-              Get.offAll(
-                const HomeScreen(),
-                transition: Transition.noTransition,
-              );
+              // navigasi ke halaman pilihan bahasa
+              Get.toNamed(Routes.pilih);
             },
             child: SizedBox.expand(
               child: Column(

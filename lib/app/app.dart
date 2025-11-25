@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'routes/route.dart';
+import 'routes/routes.dart';
+import 'routes/pages.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -15,6 +16,9 @@ class App extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFEB8A4D)),
         useMaterial3: true,
       ),
+      // Make navigations instantaneous by default (no animation)
+      defaultTransition: Transition.noTransition,
+      transitionDuration: Duration.zero,
       initialRoute: Routes.splash,
       getPages: AppPages.pages,
     );
