@@ -6,11 +6,11 @@ class SelanjutnyaButton extends StatelessWidget {
   final double height;
 
   const SelanjutnyaButton({
-    Key? key,
+    super.key,
     this.onPressed,
     this.label = 'SELANJUTNYA',
     this.height = 48.0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
