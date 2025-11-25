@@ -7,24 +7,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:hamim_inggris_v2/main.dart';
+import 'package:hamim_inggris_v2/app/ui/screens/onboarding/onboarding_screen.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Onboarding screen shows title and button', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const MaterialApp(home: OnboardingScreen()));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify onboarding title and button present
+    expect(find.text('HAMIM'), findsOneWidget);
+    expect(find.text('Get Started'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Tap anywhere on the screen (gesture should advance onboarding)
+    await tester.tap(find.byType(GestureDetector));
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // After tapping, the button should not cause errors (navigation is mocked out in this test)
+    expect(find.text('Get Started'), findsNothing);
   });
 }
