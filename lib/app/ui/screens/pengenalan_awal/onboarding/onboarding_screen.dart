@@ -30,7 +30,7 @@ class OnboardingScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  // Logo area
+                  // area logo
                   const Center(child: OnboardingLogo()),
                   const Spacer(),
                   // Gk ada button jadi dibuat bisa tap dimana aja

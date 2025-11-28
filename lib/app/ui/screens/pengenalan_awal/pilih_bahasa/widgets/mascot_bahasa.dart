@@ -6,7 +6,6 @@ class MascotBahasa extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Keep using the same asset path as the original screen so appearance doesn't change.
     return SizedBox(
       width: size,
       height: size,

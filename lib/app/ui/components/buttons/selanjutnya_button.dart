@@ -39,7 +39,7 @@ class _SelanjutnyaButtonState extends State<SelanjutnyaButton> {
 
     final Color topColor = const Color(0xFFF3A36E);
     final Color bottomColor = const Color(0xFFEE8251);
-    final Color shadowColor = Colors.black.withOpacity(.25);
+    final Color shadowColor = Colors.black.withValues(alpha: .25);
 
     // visual params that change when pressed
     final double baseShadowBottom = _pressed ? -3 : -6;
@@ -68,7 +68,7 @@ class _SelanjutnyaButtonState extends State<SelanjutnyaButton> {
               child: Container(
                 height: widget.height,
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(.16),
+                  color: Colors.black.withValues(alpha: .16),
                   borderRadius: BorderRadius.circular(14),
                 ),
               ),

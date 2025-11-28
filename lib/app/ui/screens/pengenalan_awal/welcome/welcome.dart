@@ -5,8 +5,8 @@ import 'package:hamim_inggris_v2/app/routes/routes.dart';
 import 'package:hamim_inggris_v2/app/ui/components/buttons/back_button.dart';
 import 'package:hamim_inggris_v2/app/ui/components/buttons/selanjutnya_button.dart';
 import 'package:hamim_inggris_v2/app/ui/components/buttons/sudah_punya_akun_button.dart';
-import 'package:hamim_inggris_v2/app/ui/screens/pilih_bahasa/widgets/speech_bubble.dart';
-import 'package:hamim_inggris_v2/app/ui/screens/welcome/widgets/mascot_welcome.dart';
+import 'package:hamim_inggris_v2/app/ui/screens/pengenalan_awal/welcome/widgets/speech_bubble.dart';
+import 'package:hamim_inggris_v2/app/ui/screens/pengenalan_awal/welcome/widgets/mascot_welcome.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -49,7 +49,7 @@ class WelcomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: SelanjutnyaButton(
-                  onPressed: () => Get.offAllNamed(Routes.pilih),
+                  onPressed: () => Get.toNamed(Routes.intro),
                   height: 56,
                 ),
               ),
@@ -59,7 +59,7 @@ class WelcomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: SudahPunyaAkunButton(
-                  onPressed: () => Get.toNamed(Routes.home),
+                  onPressed: () => Get.toNamed(Routes.login),
                   height: 56,
                 ),
               ),

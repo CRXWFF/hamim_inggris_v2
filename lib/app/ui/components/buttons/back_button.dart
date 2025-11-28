@@ -32,13 +32,18 @@ class AppBackButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         borderRadius: BorderRadius.circular(size / 2),
+        splashColor: Colors.white24,
+        highlightColor: Colors.white10,
         onTap: () {
+          // Prefer the provided handler so callers (screens) can override
+          // the default behavior (pop / fallback to home).
+          if (onPressed != null) {
+            onPressed!();
+            return;
+          }
+
           // debug tombol kembali
-          // debugPrint('AppBackButton tapped');
-          // if (onPressed != null) {
-          //   onPressed!();
-          //   return;
-          // }
+          debugPrint('AppBackButton tapped (default handler)');
 
           final ctx = Get.context;
           if (ctx != null && Navigator.of(ctx).canPop()) {

@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hamim_inggris_v2/app/ui/screens/onboarding/onboarding_screen.dart';
+import 'package:hamim_inggris_v2/app/ui/screens/pengenalan_awal/onboarding/onboarding_screen.dart';
 
 void main() {
   testWidgets('Onboarding screen shows title and button', (
