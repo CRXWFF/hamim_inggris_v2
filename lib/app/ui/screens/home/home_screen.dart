@@ -7,8 +7,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home')),
-      body: const Center(
-        child: Text('Welcome to HAMIM!', style: TextStyle(fontSize: 18)),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/onboarding');
+              },
+              child: const Text('Kembali ke Onboarding'),
+            ),
+          ],
+        ),
       ),
     );
   }
