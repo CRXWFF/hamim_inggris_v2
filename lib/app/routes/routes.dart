@@ -10,4 +10,5 @@ class Routes {
   static const kenaldarimana = '/kenaldarimana';
   static const mengapa = '/mengapa';
   static const mulaihafalandarimana = '/mulai-hafalan-dari-mana';
+  static const pilihJuz = '/pilih-juz';
 }

@@ -27,7 +27,8 @@ class _IntroScreenState extends State<IntroScreen> {
         curve: Curves.easeInOut,
       );
     } else {
-      Get.toNamed(Routes.kenaldarimana);
+      // go to pilih juz first
+      Get.toNamed(Routes.mulaihafalandarimana);
     }
   }
 
