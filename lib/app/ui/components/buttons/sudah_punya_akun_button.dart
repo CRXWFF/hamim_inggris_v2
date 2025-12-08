@@ -70,7 +70,7 @@ class _SudahPunyaAkunButtonState extends State<SudahPunyaAkunButton> {
               child: Container(
                 height: widget.height,
                 decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.06),
+                  color: Colors.black.withValues(alpha: .06),
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                 ),
               ),

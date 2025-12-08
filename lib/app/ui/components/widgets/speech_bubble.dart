@@ -3,9 +3,11 @@ import 'package:hamim_inggris_v2/app/core/constants/color.dart';
 
 class SpeechBubble extends StatelessWidget {
   final String text;
+  final TextStyle? textStyle;
   const SpeechBubble({
     super.key,
     this.text = 'Sebelum mulai\npilih bahasa dulu\nYuk!',
+    this.textStyle,
   });
 
   @override
@@ -22,7 +24,7 @@ class SpeechBubble extends StatelessWidget {
           child: Text(
             text,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 14, height: 1.4),
+            style: textStyle ?? const TextStyle(fontSize: 14, height: 1.4),
           ),
         ),
         // little tail

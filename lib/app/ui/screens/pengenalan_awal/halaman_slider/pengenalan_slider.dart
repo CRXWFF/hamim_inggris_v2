@@ -6,6 +6,7 @@ import 'package:hamim_inggris_v2/app/ui/components/widgets/status_bar.dart';
 import 'package:hamim_inggris_v2/app/controllers/pengenalan_controller.dart';
 import 'package:hamim_inggris_v2/app/ui/screens/pengenalan_awal/halaman_slider/widgets/mascot_bubble.dart';
 import 'package:hamim_inggris_v2/app/ui/screens/pengenalan_awal/halaman_slider/widgets/sliding_card_area.dart';
+import 'package:hamim_inggris_v2/app/ui/screens/pengenalan_awal/halaman_slider/widgets/result_header.dart';
 
 class PengenalanSliderScreen extends StatefulWidget {
   const PengenalanSliderScreen({super.key});
@@ -32,7 +33,7 @@ class _PengenalanSliderScreenState extends State<PengenalanSliderScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Obx(() {
             final page = ctrl.pageIndex.value;
-            final isFinalPage = page == 4;
+            // determine which pages show top bubble/header; keep centered pages handled in SlidingCardArea
             String bubbleText;
             double progress;
             switch (page) {
@@ -53,10 +54,24 @@ class _PengenalanSliderScreenState extends State<PengenalanSliderScreen> {
                     'Berapa lama target harianmu yang akan\nkamu luangkan?';
                 progress = 0.4;
                 break;
+              case 4:
+                bubbleText =
+                    'Itu menandakan di\nminggu ini kamu akan hafal ${ctrl.pendingCount.value} ayat';
+                progress = 0.5;
+                break;
+              case 5:
+                bubbleText =
+                    'Dalam 3 bulan kedepan\nini yang akan kamu dapatkan';
+                progress = 0.6;
+                break;
+              case 6:
+                bubbleText = 'Bersiaplah, untuk mencoba hafalan pertamamu';
+                progress = 0.7;
+                break;
               default:
                 bubbleText =
-                    'Itu menandakan di minggu ini kamu akan hafal ${ctrl.pendingCount.value} ayat';
-                progress = 0.5;
+                    'Sebelum mulai,\naku akan putarkan audio hafalannya terlebih dahulu, tanpa ada text ayat nya';
+                progress = 0.8;
             }
 
             return Column(
@@ -67,10 +82,15 @@ class _PengenalanSliderScreenState extends State<PengenalanSliderScreen> {
 
                 const SizedBox(height: 18),
 
-                // show mascot + bubble only on non-final pages
-                if (!isFinalPage) ...[
+                // show mascot + bubble only on the main question pages (0-3)
+                if (page >= 0 && page <= 3) ...[
                   MascotBubble(text: bubbleText),
+
                   SizedBox(height: page == 0 ? 70 : 18),
+                ] else if (page == 5) ...[
+                  // special header for the results summary page
+                  ResultHeader(text: bubbleText),
+                  const SizedBox(height: 18),
                 ],
 
                 // sliding card area only

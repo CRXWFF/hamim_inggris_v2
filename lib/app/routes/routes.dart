@@ -11,4 +11,7 @@ class Routes {
   static const mengapa = '/mengapa';
   static const mulaihafalandarimana = '/mulai-hafalan-dari-mana';
   static const pilihJuz = '/pilih-juz';
+  static const kuis = '/kuis';
+  static const bersiaplah = '/bersiaplah';
+  static const pemutaran = '/pemutaran-audio';
 }

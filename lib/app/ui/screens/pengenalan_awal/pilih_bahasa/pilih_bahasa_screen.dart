@@ -4,7 +4,7 @@ import 'package:hamim_inggris_v2/app/routes/routes.dart';
 import 'package:hamim_inggris_v2/app/core/constants/color.dart';
 import 'package:hamim_inggris_v2/app/ui/components/cards/card_pilihan.dart';
 import 'package:hamim_inggris_v2/app/ui/components/buttons/selanjutnya_button.dart';
-import 'widgets/speech_bubble.dart';
+import '../../../components/widgets/speech_bubble.dart';
 import 'widgets/mascot_bahasa.dart';
 
 class PilihBahasaScreen extends StatefulWidget {

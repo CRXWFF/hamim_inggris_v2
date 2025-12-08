@@ -15,6 +15,8 @@ class PengenalanController extends GetxController {
   final RxInt pendingCount = 42.obs;
   // where to start memorizing (e.g., 'Juz 1' or 'Juz 30')
   final RxString mulaiDari = ''.obs;
+  // audio repeats selected in kuis
+  final RxInt audioRepeats = 1.obs;
 
   // page controller & index for the in-place slider
   final PageController pageController = PageController();
@@ -27,6 +29,8 @@ class PengenalanController extends GetxController {
   void setPendingCount(int value) => pendingCount.value = value;
 
   void setPageIndex(int i) => pageIndex.value = i;
+
+  void setAudioRepeats(int value) => audioRepeats.value = value;
 
   /// Advance to next page (handles validation and final submission)
   void goNext() {
@@ -107,9 +111,36 @@ class PengenalanController extends GetxController {
       return;
     }
 
-    // page 4 -> final confirmation page, submit
+    // page 4 -> move to results summary (yang didapat)
     if (idx == 4) {
-      Get.offAllNamed(Routes.home);
+      pageController.nextPage(
+        duration: const Duration(milliseconds: 360),
+        curve: Curves.easeInOut,
+      );
+      return;
+    }
+
+    // page 5 -> move to final centered page
+    if (idx == 5) {
+      pageController.nextPage(
+        duration: const Duration(milliseconds: 360),
+        curve: Curves.easeInOut,
+      );
+      return;
+    }
+
+    // page 6 -> move to final centered page
+    if (idx == 6) {
+      pageController.nextPage(
+        duration: const Duration(milliseconds: 360),
+        curve: Curves.easeInOut,
+      );
+      return;
+    }
+    // page 7 -> go to kuis (playback / quiz)
+    if (idx == 7) {
+      Get.toNamed(Routes.kuis);
+      return;
     }
   }
 

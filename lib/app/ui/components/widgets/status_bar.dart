@@ -15,7 +15,7 @@ class StatusBar extends StatelessWidget {
     this.progress = 0.0,
     this.onBack,
     this.showBack = true,
-    this.height = 12.0,
+    this.height = 20.0,
   });
 
   @override

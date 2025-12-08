@@ -7,7 +7,10 @@ import '../ui/screens/pengenalan_awal/pilih_bahasa/pilih_bahasa_screen.dart';
 import '../ui/screens/pengenalan_awal/welcome/welcome.dart';
 import '../ui/screens/pengenalan_awal/intro/intro.dart';
 import '../ui/screens/pengenalan_awal/halaman_slider/pengenalan_slider.dart';
+import '../ui/screens/pengenalan_awal/kuis/kuis.dart';
 import 'package:hamim_inggris_v2/app/ui/screens/auth/login/login.dart';
+import '../ui/screens/pengenalan_awal/kuis/bersiaplah.dart';
+import '../ui/screens/pengenalan_awal/kuis/pemutaran_audio.dart';
 
 class AppPages {
   static final pages = <GetPage>[
@@ -22,16 +25,11 @@ class AppPages {
       page: () => const PengenalanSliderScreen(),
     ),
 
+    GetPage(name: Routes.kuis, page: () => const KuisScreen()),
+    GetPage(name: Routes.bersiaplah, page: () => const BersiaplahScreen()),
+    GetPage(name: Routes.pemutaran, page: () => const PemutaranAudioScreen()),
+
     // GetPage(name: Routes.register, page: () => const RegisterScreen()),
     GetPage(name: Routes.login, page: () => const LoginScreen()),
-    // GetPage(
-    //   name: Routes.kenaldarimana,
-    //   page: () => const KenalDarimanaScreen(),
-    // ),
-    // GetPage(name: Routes.mengapa, page: () => const MengapaScreen()),
-    // GetPage(
-    //   name: Routes.mulaihafalandarimana,
-    //   page: () => const MulaiHafalanDariManaScreen(),
-    // ),
   ];
 }
