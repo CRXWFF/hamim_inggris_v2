@@ -4,6 +4,7 @@ import 'package:hamim_inggris_v2/app/core/constants/color.dart';
 /// Simple selectable card used in language selection.
 class CardPilihan extends StatelessWidget {
   final String label;
+  final String? meta;
   final String? iconAsset;
   final IconData? icon;
   final bool selected;
@@ -12,6 +13,7 @@ class CardPilihan extends StatelessWidget {
   const CardPilihan({
     super.key,
     required this.label,
+    this.meta,
     this.iconAsset,
     this.icon,
     this.selected = false,
@@ -62,16 +64,33 @@ class CardPilihan extends StatelessWidget {
                             ? ClipOval(
                                 child: Image.asset(
                                   iconAsset!,
-                                  width: 36,
-                                  height: 36,
+                                  width: 72,
+                                  height: 72,
                                   fit: BoxFit.cover,
                                 ),
                               )
-                            : const SizedBox.shrink()),
+                            : const SizedBox.square()),
                 ),
               ),
               const SizedBox(width: 12),
-              Expanded(child: Text(label)),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(child: Text(label)),
+                    if (meta != null) ...[
+                      const SizedBox(width: 8),
+                      Text(
+                        meta!,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF7A7A7A),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
               if (selected) ...[Icon(Icons.check_circle, color: background)],
             ],
           ),

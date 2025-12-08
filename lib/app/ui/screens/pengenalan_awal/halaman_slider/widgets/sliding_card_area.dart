@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hamim_inggris_v2/app/controllers/pengenalan_controller.dart';
 import 'package:hamim_inggris_v2/app/ui/components/cards/card_pilihan.dart';
+import 'package:hamim_inggris_v2/app/ui/screens/pengenalan_awal/intro/widgets/speech_bubble.dart';
+import 'package:hamim_inggris_v2/app/ui/screens/pengenalan_awal/intro/widgets/mascot_siap.dart';
 
 /// SlidingCardArea contains the PageView for the three onboarding steps.
 class SlidingCardArea extends StatelessWidget {
@@ -31,6 +33,13 @@ class SlidingCardArea extends StatelessWidget {
     'Memberi teladan bagi keluarga',
     'Sebagai bekal dakwah',
     'Lainnya',
+  ];
+
+  static final List<Map<String, String>> _targetOptions = [
+    {'label': '5 menit / hari', 'meta': 'Mulai dulu'},
+    {'label': '15 menit / hari', 'meta': 'Siap konsisten'},
+    {'label': '20 menit / hari', 'meta': 'Yang terbaik'},
+    {'label': '30 menit / hari', 'meta': 'Mau serius'},
   ];
 
   @override
@@ -101,6 +110,47 @@ class SlidingCardArea extends StatelessWidget {
                     ),
                   );
                 }).toList(),
+              ),
+            );
+          }),
+
+          // page 3 - daily target selection
+          Obx(() {
+            final selected = ctrl.target.value;
+            return SingleChildScrollView(
+              child: Column(
+                children: _targetOptions.map((opt) {
+                  final label = opt['label']!;
+                  final meta = opt['meta']!;
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: CardPilihan(
+                      label: label,
+                      meta: meta,
+                      icon: Icons.timer,
+                      selected: selected == label,
+                      onTap: () => ctrl.setTarget(label),
+                    ),
+                  );
+                }).toList(),
+              ),
+            );
+          }),
+
+          // page 4 - centered mascot + bubble (confirmation/readiness)
+          Obx(() {
+            final count = ctrl.pendingCount.value;
+            return Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SpeechBubble(
+                    text:
+                        'Itu menandakan di\nminggu ini kamu akan hafal $count ayat',
+                  ),
+                  const SizedBox(height: 12),
+                  MascotSiap(size: 300),
+                ],
               ),
             );
           }),

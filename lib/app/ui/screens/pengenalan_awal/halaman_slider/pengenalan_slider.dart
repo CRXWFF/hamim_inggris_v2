@@ -15,8 +15,6 @@ class PengenalanSliderScreen extends StatefulWidget {
 }
 
 class _PengenalanSliderScreenState extends State<PengenalanSliderScreen> {
-  // Page state moved to controller
-
   @override
   void dispose() {
     // controller disposes PageController in its onClose; nothing to do here
@@ -34,34 +32,46 @@ class _PengenalanSliderScreenState extends State<PengenalanSliderScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Obx(() {
             final page = ctrl.pageIndex.value;
+            final isFinalPage = page == 4;
             String bubbleText;
             double progress;
             switch (page) {
               case 0:
                 bubbleText = 'Kamu ingin memulai\nhafalan dari mana?';
-                progress = 0.25;
+                progress = 0.1;
                 break;
               case 1:
                 bubbleText = 'Darimana kamu tau HAMIM?';
-                progress = 0.5;
+                progress = 0.2;
+                break;
+              case 2:
+                bubbleText = 'Mengapa kamu\ningin hafal Qur\'an?';
+                progress = 0.3;
+                break;
+              case 3:
+                bubbleText =
+                    'Berapa lama target harianmu yang akan\nkamu luangkan?';
+                progress = 0.4;
                 break;
               default:
-                bubbleText = 'Mengapa kamu\ningin hafal Qur\'an?';
-                progress = 0.75;
+                bubbleText =
+                    'Itu menandakan di minggu ini kamu akan hafal ${ctrl.pendingCount.value} ayat';
+                progress = 0.5;
             }
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // static status bar + back
+                // static status bar + back (always visible)
                 StatusBar(progress: progress, onBack: () => ctrl.goBack()),
 
                 const SizedBox(height: 18),
 
-                // static mascot + bubble (text changes per page)
-                MascotBubble(text: bubbleText),
-
-                SizedBox(height: page == 0 ? 70 : 18),
+                // show mascot + bubble only on non-final pages
+                if (!isFinalPage) ...[
+                  MascotBubble(text: bubbleText),
+                  SizedBox(height: page == 0 ? 70 : 18),
+                ],
 
                 // sliding card area only
                 SlidingCardArea(ctrl: ctrl),

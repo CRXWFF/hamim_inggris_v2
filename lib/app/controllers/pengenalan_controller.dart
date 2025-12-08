@@ -9,6 +9,10 @@ class PengenalanController extends GetxController {
 
   // why do you want to memorize
   final RxString mengapa = ''.obs;
+  // daily target/duration selection
+  final RxString target = ''.obs;
+  // pending number of questions or similar value from backend (default 42)
+  final RxInt pendingCount = 42.obs;
   // where to start memorizing (e.g., 'Juz 1' or 'Juz 30')
   final RxString mulaiDari = ''.obs;
 
@@ -19,6 +23,8 @@ class PengenalanController extends GetxController {
   void setKenalDarimana(String value) => kenalDarimana.value = value;
   void setMengapa(String value) => mengapa.value = value;
   void setMulaiDari(String value) => mulaiDari.value = value;
+  void setTarget(String value) => target.value = value;
+  void setPendingCount(int value) => pendingCount.value = value;
 
   void setPageIndex(int i) => pageIndex.value = i;
 
@@ -62,8 +68,8 @@ class PengenalanController extends GetxController {
       return;
     }
 
-    // last step
-    if (idx >= 2) {
+    // page 2 -> mengapa (first of the final questions)
+    if (idx == 2) {
       if (mengapa.value.isEmpty) {
         Get.snackbar(
           '',
@@ -74,7 +80,35 @@ class PengenalanController extends GetxController {
         );
         return;
       }
+      pageController.nextPage(
+        duration: const Duration(milliseconds: 360),
+        curve: Curves.easeInOut,
+      );
+      return;
+    }
+
+    // page 3 -> target selection (move to confirmation/ready page)
+    if (idx == 3) {
       saveProgress();
+      if (target.value.isEmpty) {
+        Get.snackbar(
+          '',
+          'Pilih salah satu opsi',
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.redAccent,
+          colorText: Colors.white,
+        );
+        return;
+      }
+      pageController.nextPage(
+        duration: const Duration(milliseconds: 360),
+        curve: Curves.easeInOut,
+      );
+      return;
+    }
+
+    // page 4 -> final confirmation page, submit
+    if (idx == 4) {
       Get.offAllNamed(Routes.home);
     }
   }
@@ -104,6 +138,7 @@ class PengenalanController extends GetxController {
       'mulai_dari': mulaiDari.value,
       'kenal_darimana': kenalDarimana.value,
       'mengapa': mengapa.value,
+      'target': target.value,
     };
   }
 
