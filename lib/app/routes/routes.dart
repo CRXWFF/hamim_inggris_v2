@@ -12,6 +12,11 @@ class Routes {
   static const mulaihafalandarimana = '/mulai-hafalan-dari-mana';
   static const pilihJuz = '/pilih-juz';
   static const kuis = '/kuis';
+  static const berapaAudio = '/berapa-audio';
   static const bersiaplah = '/bersiaplah';
   static const pemutaran = '/pemutaran-audio';
+  static const bacaAyat = '/baca-ayat';
+  static const sambungAyat = '/sambung-ayat';
+  static const speechToText = '/speech-to-text';
+  static const resultKuis = '/result-kuis';
 }

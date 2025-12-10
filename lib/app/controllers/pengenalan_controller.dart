@@ -139,7 +139,7 @@ class PengenalanController extends GetxController {
     }
     // page 7 -> go to kuis (playback / quiz)
     if (idx == 7) {
-      Get.toNamed(Routes.kuis);
+      Get.toNamed(Routes.berapaAudio);
       return;
     }
   }

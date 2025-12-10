@@ -42,6 +42,7 @@ flutter:
     - assets/gif/maskot_bersiaplah.gif
     - assets/gif/maskot_loading_sebelum_kuis.gif
     - assets/gif/maskot_kuis.gif
+    - assets/gif/maskot_result.gif
     - assets/.env
 
   # To add custom fonts to your application, add a fonts section here,

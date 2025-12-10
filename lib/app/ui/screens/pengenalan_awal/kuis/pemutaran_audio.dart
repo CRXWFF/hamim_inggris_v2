@@ -183,14 +183,8 @@ class PemutaranAudioScreen extends StatelessWidget {
                   width: double.infinity,
                   child: SelanjutnyaButton(
                     onPressed: () {
-                      // if playback completed all repeats then proceed; otherwise proceed to next repeat
-                      if (ctrl.current.value >= total &&
-                          !ctrl.isPlaying.value) {
-                        Get.offAllNamed('/home');
-                      } else if (!ctrl.isPlaying.value) {
-                        // user can advance to next repeat manually
-                        ctrl.next();
-                      }
+                      // Navigate to baca ayat screen
+                      Get.toNamed('/baca-ayat');
                     },
                     height: 56,
                   ),
